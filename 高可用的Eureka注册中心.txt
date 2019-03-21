@@ -1,0 +1,15 @@
+Server1£º
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: http://${Server2IP}:${server2.port}/eureka/,http://${Server3IP}:${server3.port}/eureka/
+ 
+Client£º
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://Server1.ip:server1.port/eureka/,http://Server2.ip:server2.port/eureka/,http://Server3.ip:server3.port/eureka/
