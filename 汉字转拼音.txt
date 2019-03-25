@@ -1,0 +1,1 @@
+PinyinHelper.convertToPinyinString(Òª×ªµÄºº×Ö, "", PinyinFormat.WITHOUT_TONE);
