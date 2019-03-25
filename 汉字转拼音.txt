@@ -1,1 +1,121 @@
-PinyinHelper.convertToPinyinString(要转的汉字, "", PinyinFormat.WITHOUT_TONE);
+PinyinHelper.convertToPinyinString(要转的汉字, "", PinyinFormat.package com.idm.util;
+
+import com.github.stuxuhai.jpinyin.ChineseHelper;
+import com.github.stuxuhai.jpinyin.PinyinException;
+import com.github.stuxuhai.jpinyin.PinyinFormat;
+import com.github.stuxuhai.jpinyin.PinyinHelper;
+
+
+/**
+ * 描述: 汉字转换为拼音字符串 .</br>
+ * 时间: 2017-09-25 11:26 .</br>
+ * 作者: DJH .</br>
+ * 版本: 1.0.0.1 .</br>
+ * 公司: www.gtsoftware.cn
+ */
+public class ChangeToPinYin {
+
+    /**
+     * 转换为有声调的拼音字符串
+     *
+     * @param pinYinStr 汉字
+     * @return 有声调的拼音字符串
+     */
+    public String changeToMarkPinYin(String pinYinStr) {
+        String tempStr = null;
+        try {
+            tempStr = PinyinHelper.convertToPinyinString(pinYinStr, " ", PinyinFormat.WITH_TONE_MARK);
+        } catch (PinyinException e) {
+            e.printStackTrace();
+        }
+        return tempStr;
+    }
+
+    /**
+     * 转换为数字声调字符串
+     *
+     * @param pinYinStr 需转换的汉字
+     * @return 转换完成的拼音字符串
+     */
+    public String changeToNumberPinYin(String pinYinStr) {
+        String tempStr = null;
+        try {
+            tempStr = PinyinHelper.convertToPinyinString(pinYinStr, " ", PinyinFormat.WITH_TONE_NUMBER);
+        } catch (PinyinException e) {
+            e.printStackTrace();
+        }
+        return tempStr;
+    }
+
+    /**
+     * 转换为不带音调的拼音字符串
+     *
+     * @param pinYinStr 需转换的汉字
+     * @return 拼音字符串
+     */
+    public String changeToTonePinYin(String pinYinStr) {
+        String tempStr = null;
+        try {
+            tempStr = PinyinHelper.convertToPinyinString(pinYinStr, "", PinyinFormat.WITHOUT_TONE);
+        } catch (PinyinException e) {
+            e.printStackTrace();
+        }
+        return tempStr;
+    }
+
+    /**
+     * 转换为每个汉字对应拼音首字母字符串
+     *
+     * @param pinYinStr 需转换的汉字
+     * @return 拼音字符串
+     */
+    public String changeToGetShortPinYin(String pinYinStr) {
+        String tempStr = null;
+        try {
+            tempStr = PinyinHelper.getShortPinyin(pinYinStr);
+        } catch (PinyinException e) {
+            e.printStackTrace();
+        }
+        return tempStr;
+    }
+
+    /**
+     * 检查汉字是否为多音字
+     *
+     * @param pinYinStr 需检查的汉字
+     * @return true 多音字，false 不是多音字
+     */
+    public boolean checkPinYin(char pinYinStr) {
+        boolean check = PinyinHelper.hasMultiPinyin(pinYinStr);
+        return check;
+    }
+
+
+    /**
+     * 简体转换为繁体
+     *
+     * @param pinYinStr 简体中文字符串
+     * @return 繁体中文字符串
+     */
+    public String changeToTraditional(String pinYinStr) {
+        String tempStr = ChineseHelper.convertToTraditionalChinese(pinYinStr);
+        return tempStr;
+    }
+
+    /**
+     * 繁体转换为简体
+     *
+     * @param pinYinSt 繁体中文字符串
+     * @return 简体中文字符串
+     */
+    public String changeToSimplified(String pinYinSt) {
+        String tempStr = ChineseHelper.convertToSimplifiedChinese(pinYinSt);
+        return tempStr;
+    }
+    public static void main(String[] args) {
+    	ChangeToPinYin toPinYin = new ChangeToPinYin();
+    	String pinyin = toPinYin.changeToTonePinYin("张三封");
+    	System.out.println(pinyin);
+	}
+}
+WITHOUT_TONE);
